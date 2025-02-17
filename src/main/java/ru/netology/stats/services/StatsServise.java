@@ -13,10 +13,7 @@ public class StatsServise {
 
     // 2. Средняя сумма продаж в месяц
     public long amountAverageSales(long[] sales) {
-        long ammount = 0;
-        for (long i : sales) {
-            ammount += i;
-        }
+        long ammount = amountSales(sales);
         long ammountAverage = ammount / 12;
 
         return ammountAverage;
@@ -52,16 +49,10 @@ public class StatsServise {
     // 5. Количество месяцев продаж ниже среднего
     public int monthsSalesBelowAverage(long[] sales) {
 
-        long ammount = 0;
-        for (long i : sales) {
-            ammount += i;
-        }
-        long ammountAverage = ammount / 12;
-
         int numberMonths = 0;
 
         for (int i = 0; i < sales.length; i++) {
-            if (sales[i] < ammountAverage) {
+            if (sales[i] < amountAverageSales(sales)) {
                 numberMonths++;
             }
         }
@@ -72,16 +63,10 @@ public class StatsServise {
     // 6. Количество месяцев продаж выше среднего
     public int monthsSalesAboveAverage(long[] sales) {
 
-        long ammount = 0;
-        for (long i : sales) {
-            ammount += i;
-        }
-        long ammountAverage = ammount / 12;
-
         int numberMonths = 0;
 
         for (int i = 0; i < sales.length; i++) {
-            if (sales[i] > ammountAverage) {
+            if (sales[i] > amountAverageSales(sales)) {
                 numberMonths++;
             }
         }
